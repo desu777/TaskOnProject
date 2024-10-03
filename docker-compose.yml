@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  backend:
+    build:
+      context: ./backend
+    ports:
+      - "2137:2137"
+    volumes:
+      - ./backend/data:/app/data  
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "80:80"

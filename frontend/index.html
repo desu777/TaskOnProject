@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rejestracja i Logowanie</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <div id="formContainer">
+        <h1>Rejestracja</h1>
+        <form id="registerForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Zarejestruj</button>
+        </form>
+
+        <h1>Logowanie</h1>
+        <form id="loginForm">
+            <input type="email" id="loginEmail" placeholder="Email" required>
+            <input type="password" id="loginPassword" placeholder="Password" required>
+            <button type="submit">Zaloguj</button>
+        </form>
+    </div>
+
+    <div id="welcomeGif" style="display:none;">
+        <img src="https://media.tenor.com/images/1f3d15ff35b8928f07c1a5f7c9206bde/tenor.gif" alt="Welcome" />
+    </div>
+</body>
+</html>
