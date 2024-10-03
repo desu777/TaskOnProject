@@ -6,7 +6,7 @@ function registerUser() {
     const password = document.getElementById('password').value;
 
     // Wykonaj fetch do backendu
-    fetch('http://localhost:8080/register', { // Zmień adres, jeśli jest inny
+    fetch('http://localhost:2137/register', { // Zmień adres, jeśli jest inny
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -34,7 +34,7 @@ function loginUser() {
     const password = document.getElementById('login-password').value;
 
     // Wykonaj fetch do backendu
-    fetch('http://localhost:8080/login', { // Zmień adres, jeśli jest inny
+    fetch('http://localhost:2137/login', { // Zmień adres, jeśli jest inny
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
