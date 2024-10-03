@@ -1,42 +1,68 @@
-document.getElementById("registerForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
-    const username = document.getElementById("username").value;
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
+// Funkcja do rejestracji użytkownika
+function registerUser() {
+    // Pobierz dane z formularza rejestracji
+    const username = document.getElementById('username').value;
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
 
-    const response = await fetch("http://localhost:2137/register", {
-        method: "POST",
+    // Wykonaj fetch do backendu
+    fetch('http://localhost:8080/register', { // Zmień adres, jeśli jest inny
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ username, email, password }),
+        body: JSON.stringify({ username, email, password })
+    })
+    .then(response => {
+        if (response.ok) {
+            alert('Użytkownik zarejestrowany!');
+            // Możesz dodać logikę do przełączenia na formularz logowania
+            showLoginForm();
+        } else {
+            alert('Błąd podczas rejestracji!');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
     });
+}
 
-    if (response.ok) {
-        alert("Rejestracja udana!");
-    } else {
-        alert("Błąd rejestracji!");
-    }
-});
+// Funkcja do logowania użytkownika
+function loginUser() {
+    // Pobierz dane z formularza logowania
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
 
-document.getElementById("loginForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
-    const email = document.getElementById("loginEmail").value;
-    const password = document.getElementById("loginPassword").value;
-
-    const response = await fetch("http://localhost:2137/login", {
-        method: "POST",
+    // Wykonaj fetch do backendu
+    fetch('http://localhost:8080/login', { // Zmień adres, jeśli jest inny
+        method: 'POST',
         headers: {
-            "Content-Type": "application/json",
+            'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password })
+    })
+    .then(response => {
+        if (response.ok) {
+            document.getElementById('login-form').classList.add('hidden'); // Ukryj formularz logowania
+            document.getElementById('welcomeGif').classList.remove('hidden'); // Pokaż GIF
+            alert('Zalogowano pomyślnie!');
+        } else {
+            alert('Błąd podczas logowania!');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
     });
+}
 
-    if (response.ok) {
-        // Ukryj formularze i wyświetl GIF powitania
-        document.getElementById("formContainer").style.display = "none";
-        document.getElementById("welcomeGif").style.display = "block";
-    } else {
-        alert("Błędne dane logowania!");
-    }
-});
+// Funkcja do przełączania na formularz logowania
+function showLoginForm() {
+    document.getElementById('register-form').classList.add('hidden');
+    document.getElementById('login-form').classList.remove('hidden');
+}
+
+// Funkcja do przełączania na formularz rejestracji
+function showRegisterForm() {
+    document.getElementById('login-form').classList.add('hidden');
+    document.getElementById('register-form').classList.remove('hidden');
+}

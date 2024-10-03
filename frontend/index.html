@@ -3,29 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rejestracja i Logowanie</title>
-    <script src="script.js" defer></script>
+    <title>Logowanie i Rejestracja</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="formContainer">
-        <h1>Rejestracja</h1>
-        <form id="registerForm">
-            <input type="text" id="username" placeholder="Username" required>
-            <input type="email" id="email" placeholder="Email" required>
-            <input type="password" id="password" placeholder="Password" required>
-            <button type="submit">Zarejestruj</button>
-        </form>
-
-        <h1>Logowanie</h1>
-        <form id="loginForm">
-            <input type="email" id="loginEmail" placeholder="Email" required>
-            <input type="password" id="loginPassword" placeholder="Password" required>
-            <button type="submit">Zaloguj</button>
-        </form>
+    <div class="background">
+        <img src="szablon.png" alt="Background">
+    </div>
+    <div class="container">
+        <div class="form-box">
+            <!-- Formularz Rejestracji -->
+            <div id="register-form" class="form">
+                <h2>Rejestracja</h2>
+                <input type="text" id="username" placeholder="Nazwa użytkownika" required>
+                <input type="email" id="email" placeholder="E-mail" required>
+                <input type="password" id="password" placeholder="Hasło" required>
+                <button onclick="registerUser()">Zarejestruj się</button>
+                <p>Masz już konto? <span onclick="showLoginForm()">Zaloguj się</span></p>
+            </div>
+            <!-- Formularz Logowania -->
+            <div id="login-form" class="form hidden">
+                <h2>Logowanie</h2>
+                <input type="email" id="login-email" placeholder="E-mail" required>
+                <input type="password" id="login-password" placeholder="Hasło" required>
+                <button onclick="loginUser()">Zaloguj się</button>
+                <p>Nie masz konta? <span onclick="showRegisterForm()">Zarejestruj się</span></p>
+            </div>
+            <!-- GIF po udanym logowaniu -->
+            <div id="welcomeGif" class="hidden">
+                <img src="gif.gif" alt="Welcome" />
+            </div>
+        </div>
     </div>
 
-    <div id="welcomeGif" style="display:none;">
-        <img src="https://media.tenor.com/images/1f3d15ff35b8928f07c1a5f7c9206bde/tenor.gif" alt="Welcome" />
-    </div>
+    <script src="script.js"></script>
 </body>
 </html>
+
+
